@@ -3,9 +3,9 @@ import requests
 #autor tot0p
 #github = https://github.com/tot0p/tot0p
 
-char1 = os.getenv['CHAR1']
-char2 = os.getenv['CHAR2']
-draw_graph = os.getenv['draw_graph']
+char1 = os.getenv('CHAR1')
+char2 = os.getenv('CHAR2')
+draw_graph = os.getenv('draw_graph')
 
 blc = char1+char2
 
@@ -16,9 +16,9 @@ configMermaid = [
     "pie\n",
 ]
 
-nameofbalise = os.getenv['name_of_balise']
-commit_message = os.getenv["commit_message"]
-url = "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key="+os.getenv['WAKATIME_API_KEY']
+nameofbalise = os.getenv('name_of_balise')
+commit_message = os.getenv("commit_message")
+url = "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key="+os.getenv('WAKATIME_API_KEY')
 DEL_START  ="<!--"+nameofbalise+"-->"
 DEL_END    ="<!--/"+nameofbalise+"-->"
 n = 0
