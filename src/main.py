@@ -5,7 +5,7 @@ import requests
 
 char1 = os.getenv('CHAR1')
 char2 = os.getenv('CHAR2')
-draw_graph = os.getenv('draw_graph')
+draw_graph = os.getenv('DRAW_GRAPH')
 
 blc = char1+char2
 
@@ -16,8 +16,8 @@ configMermaid = [
     "pie\n",
 ]
 
-nameofbalise = os.getenv('name_of_balise')
-commit_message = os.getenv("commit_message")
+nameofbalise = os.getenv('NAME_OF_BALISE')
+commit_message = os.getenv("COMMIT_MESSAGE")
 url = "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key="+os.getenv('WAKATIME_API_KEY')
 DEL_START  ="<!--"+nameofbalise+"-->"
 DEL_END    ="<!--/"+nameofbalise+"-->"
