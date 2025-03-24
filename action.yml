@@ -1,0 +1,59 @@
+name: "wakatime-readme"
+description: "Update your README with your latest Wakatime stats"
+author: "tot0p"
+branding:
+  icon: "clock"
+  color: "blue"
+
+inputs:
+  wakatime_api_key:
+    description: "Your Wakatime API key"
+    required: true
+  char1:
+    description: "Character to use for the first bar"
+    required: false
+    default: "▓"
+  char2:
+    description: "Character to use for the second bar"
+    required: false
+    default: "░"
+  name_of_balise:
+    description: "Name of the balise to update"
+    required: false
+    default: "WAKATIME"
+  commit_message:
+    description: "Commit message"
+    required: false
+    default: "wakatime update"
+  draw_graph:
+    description: "Draw a graph"
+    required: false
+    default: "false"
+
+runs:
+  using : "composite"
+  steps:
+    - name : "Checkout"
+      uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f $GITHUB_ACTION_PATH/src/requirements.txt ]; then pip install -r$GITHUB_ACTION_PATH/src/requirements.txt; fi
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+    - name: run python
+      shell: bash
+      run: |
+        python $GITHUB_ACTION_PATH/src/main.py
+      env :
+        WALATIME_API_KEY: ${{ inputs.wakatime_api_key }}
+        CHAR1: ${{ inputs.char1 }}
+        CHAR2: ${{ inputs.char2 }}
+        NAME_OF_BALISE: ${{ inputs.name_of_balise }}
+        COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        DRAW_GRAPH: ${{ inputs.draw_graph }}
