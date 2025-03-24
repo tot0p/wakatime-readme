@@ -51,7 +51,7 @@ runs:
       run: |
         python $GITHUB_ACTION_PATH/src/main.py
       env :
-        WALATIME_API_KEY: ${{ inputs.wakatime_api_key }}
+        WAKATIME_API_KEY: ${{ inputs.wakatime_api_key }}
         CHAR1: ${{ inputs.char1 }}
         CHAR2: ${{ inputs.char2 }}
         NAME_OF_BALISE: ${{ inputs.name_of_balise }}
