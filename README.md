@@ -47,6 +47,36 @@ And you need to have the following balise in your `README.md` file:
 ⚠️**WARNING**⚠️ : this action need Read and write permissions (Settings > Actions > General)
 
 
+## Example usage
+
+```yaml
+name: Update Wakatime stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches:
+      - main
+  
+jobs:
+  update_wakatime_stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update Wakatime stats
+        uses: tot0p/wakatime-readme@v1
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          CHAR1: ">"
+          CHAR2: "-"
+          name_of_balise: "WAKATIME"
+          commit_message: "wakatime update"
+          draw_graph: "true"
+```
+
 ## Result
 
 <!--WAKATIME-->
